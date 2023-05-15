@@ -3,12 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\DoctorsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Void_;
+use Symfony\Component\HttpFoundation\File\File; 
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: DoctorsRepository::class)]
+#[Vich\Uploadable]
 class Doctors implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -43,11 +49,22 @@ class Doctors implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::TEXT)]
     private ?string $Bio = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[Vich\UploadableField(mapping: 'doctors', fileNameProperty: 'DocPicture')]
+    private ?File $DocPictureFile = null;
+
+    #[ORM\Column(length: 255)]
     private ?string $DocPicture = null;
 
     #[ORM\Column(length: 255)]
     private ?string $DocAddress = null;
+
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'TreatingDoctors')]
+    private Collection $TreatedUsers;
+
+    public function __construct()
+    {
+        $this->TreatedUsers = new ArrayCollection();
+    }
 
     public function __toString(): string
     {
@@ -88,7 +105,7 @@ class Doctors implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_DOCTOR';
 
         return array_unique($roles);
     }
@@ -184,16 +201,28 @@ class Doctors implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getDocPicture(): ?string
+
+    
+    public function setDocPictureFile(?File $DocPictureFile = null): void
     {
-        return $this->DocPicture;
+        $this->DocPictureFile = $DocPictureFile;
     }
 
-    public function setDocPicture(string $DocPicture): self
+    public function getDocPictureFile(): ?File
+    {
+        return $this->DocPictureFile;
+    }
+
+    public function setDocPicture(?string $DocPicture): self
     {
         $this->DocPicture = $DocPicture;
 
         return $this;
+    }
+
+    public function getDocPicture(): ?string
+    {
+        return $this->DocPicture;
     }
 
     public function getDocAddress(): ?string
@@ -206,5 +235,40 @@ class Doctors implements UserInterface, PasswordAuthenticatedUserInterface
         $this->DocAddress = $DocAddress;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getTreatedUsers(): Collection
+    {
+        return $this->TreatedUsers;
+    }
+
+    public function addTreatedUser(User $treatedUser): self
+    {
+        if (!$this->TreatedUsers->contains($treatedUser)) {
+            $this->TreatedUsers->add($treatedUser);
+        }
+
+        return $this;
+    }
+
+    public function removeTreatedUser(User $treatedUser): self
+    {
+        $this->TreatedUsers->removeElement($treatedUser);
+
+        return $this;
+    }
+
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function uploadDocPictureFile(): void
+    {
+        if (null === $this->getDocPictureFile()) {
+            return;
+        }
+
+        $this->setDocPicture($this->getDocPictureFile()->getFilename());
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -45,6 +47,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\ManyToMany(targetEntity: Doctors::class, mappedBy: 'TreatedUsers')]
+    private Collection $TreatingDoctors;
+
+    public function __construct()
+    {
+        $this->TreatingDoctors = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -172,6 +182,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Doctors>
+     */
+    public function getTreatingDoctors(): Collection
+    {
+        return $this->TreatingDoctors;
+    }
+
+    public function addTreatingDoctor(Doctors $treatingDoctor): self
+    {
+        if (!$this->TreatingDoctors->contains($treatingDoctor)) {
+            $this->TreatingDoctors->add($treatingDoctor);
+            $treatingDoctor->addTreatedUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTreatingDoctor(Doctors $treatingDoctor): self
+    {
+        if ($this->TreatingDoctors->removeElement($treatingDoctor)) {
+            $treatingDoctor->removeTreatedUser($this);
+        }
 
         return $this;
     }

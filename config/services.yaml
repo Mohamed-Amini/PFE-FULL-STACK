@@ -16,13 +16,25 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
-            - '../src/Kernel.php'
+            # - '../src/DependencyInjection/'
+            # - '../src/Entity/'
+            # - '../src/Kernel.php'
+    shared_context:
+            class: Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage
     admin.doctors:
         class: App\Admin\DoctorsAdmin
+        arguments:
+            - 'admin.doctors' 
+            - App\Entity\Doctors
+            - Sonata\AdminBundle\Controller\CRUDController
         tags:
-            - { name: sonata.admin, model_class: App\Entity\Doctors , label: Adding a Doctor, manager_type: orm}
+            - { name: sonata.admin, model_class: App\Entity\Doctors , label: Doctors, manager_type: orm , group: DOCTORS/USERS , icon: '<i class="fa fa-users"></i>'}
+    admin.user: 
+        class: App\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, model_class: App\Entity\User, controller: App\Controller\UserAdminController, manager_type: orm, group: DOCTORS/USERS, label: Users}
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    

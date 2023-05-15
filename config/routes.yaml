@@ -3,3 +3,6 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+doctors_login:
+    path: /doctors/login
+    controller: App\Controller\DoctorsLoginController::login

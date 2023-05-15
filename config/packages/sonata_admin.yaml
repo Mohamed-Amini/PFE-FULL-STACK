@@ -1,12 +1,22 @@
 sonata_admin:
-    title: 'Admin Dashboard'
+    title_logo: images/dashboard/Clinique-Logo.png
     dashboard:
         blocks:
-            - { type: sonata.admin.block.admin_list, position: left }
-    
-
+            - position: left
+              type: sonata.admin.block.admin_list
+            - position: right
+              type: sonata.block.service.text
+              settings:
+                  content: >
+                      <div style="background-color: #f2f2f2; border-radius: 5px;">
+                          <h2 style="font-size: 28px;  text-align: center;">Welcome to the Admin</h2>
+                          <p style="font-size: 16px; line-height: 1.5;">As an <code>admin</code>, you have access to a variety of tools and features that allow you to manage and customize your website. You can create and edit pages, manage <code>users</code> and <code>permissions</code>, and much more. To get started, explore the menu on the left and click on the section you want to work on.</p>
+                          <p style="font-size: 16px; line-height: 1.5;">This is also the only place where you can add <code>doctors</code> and assign them a <code>role</code>. To get started, click on the <code>Doctors</code> section in the left menu and use the form to add new doctors and assign them a role.</p>
+                      </div>
+              roles: [ROLE_ADMIN]
 
 sonata_block:
     blocks:
         sonata.admin.block.admin_list:
-            contexts: [admin]
+            contexts:
+                - admin
