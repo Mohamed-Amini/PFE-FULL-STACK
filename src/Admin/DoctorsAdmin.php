@@ -12,6 +12,7 @@ use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\FormatterBundle\Form\Type\SimpleFormatterType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Email;
@@ -23,6 +24,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Sonata\FormatterBundle\Form\Type\FormatterType;
 
 final class DoctorsAdmin extends AbstractAdmin
 {
@@ -45,6 +47,12 @@ final class DoctorsAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list): void
     {
         $list
+            ->add('id')
+
+            ->add('DocPicture', null, [
+                'label' => 'Picture',
+                'template' => 'admin/list_doc_picture.html.twig', 
+            ])
             ->addIdentifier('DocLastName', null ,[
                 'label' => 'Last Name',
             ])
@@ -57,15 +65,19 @@ final class DoctorsAdmin extends AbstractAdmin
             ->add('DocPhoneNumber' , null ,[
                 'label' => 'Phone Number']
             )
-            ->add('Bio' , null ,[
-                'label' => 'Biography']
-            )
+            // ->add('Bio' , null ,[
+            //     'label' => 'Biography']
+            // )
             ->add('email' , FieldDescriptionInterface::TYPE_EMAIL , [
                 'label' => 'Email'
             ])
             // ->add('passwordHash', null, [
             //     'label' => 'Password',
             // ])
+            ->add('createdAt', FieldDescriptionInterface::TYPE_DATETIME, [
+                'label' => 'Time of Creation',
+                'format' => 'Y-m-d H:i',
+            ])
             ->add('roles' , null, [
                 'label' => 'Roles',
             ])
@@ -125,10 +137,10 @@ final class DoctorsAdmin extends AbstractAdmin
                 ]),
             ],
         ])
-        ->add('Bio', TextareaType::class, [
+        ->add('Bio', SimpleFormatterType::class, [
             'required' => true,
             'label' => 'Biography',
-            'attr' => ['rows' => 5]
+            'format' => 'html',
         ])
         ->add('DocAddress', null, [
             'constraints' => [
@@ -142,7 +154,7 @@ final class DoctorsAdmin extends AbstractAdmin
             'download_label' => 'Download the picture',
             'constraints' => [
                 new Image([
-                    'maxSize' => '1024k',
+                    'maxSize' => '240k',
                     'mimeTypes' => ['image/jpeg', 'image/png'],
                     'mimeTypesMessage' => 'Invalid image format (JPEG or PNG only)',
                 ]),
@@ -175,9 +187,13 @@ final class DoctorsAdmin extends AbstractAdmin
             ->add('DocLastName')
             ->add('Specialization')
             ->add('DocPhoneNumber')
+            ->add('createdAt', FieldDescriptionInterface::TYPE_DATETIME, [
+                'label' => 'Time of Creation',
+                'format' => 'Y-M-d H:i',
+            ])
             ->add('Bio', FieldDescriptionInterface::TYPE_TEXTAREA)
             ->add('DocPicture', null, [
-                'template' => 'admin/list_doc_picture.html.twig',
+                'template' => 'admin/show_doc_picture.html.twig',
             ])
             ->add('DocAddress');
     }
@@ -189,10 +205,14 @@ final class DoctorsAdmin extends AbstractAdmin
         ]);
     }
 
+    
+
     public function onSubmit(FormEvent $event): void
     {
         $doctor = $event->getData();
         $form = $event->getForm();
+
+        $doctor->setCreatedAt(new \DateTimeImmutable());
         
         if ($form->has('plainPassword')) {
             $plainPassword = $form->get('plainPassword')->getData();

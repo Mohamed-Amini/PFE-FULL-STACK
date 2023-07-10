@@ -1,0 +1,105 @@
+<?xml version="1.0" ?>
+<datas>
+<data>
+<Id><![CDATA[5]]></Id>
+<Email><![CDATA[rass@gmail.com]]></Email>
+<Roles><![CDATA[[ROLE_USER, ROLE_DOCTOR]]]></Roles>
+<Password><![CDATA[$2y$10$LIIlk8iPbrl7gSrhReVAB.Q7.n3wuCHbmuJOJqLCaQIP3PcgnvsAS]]></Password>
+<Doc First Name><![CDATA[hmida]]></Doc First Name>
+<Doc Last Name><![CDATA[rasslmida]]></Doc Last Name>
+<Specialization><![CDATA[hmida]]></Specialization>
+<Doc Phone Number><![CDATA[0641945350]]></Doc Phone Number>
+<Bio><![CDATA[Son of Victor Laugier-constructor engineer and town planning, of French origin, who left his country together with his wife to settle in our country and who was later adopted by Romania-Charles Laugier was born on the 21-st January 1875 in the locality Cernele, near Craiova [1]. He attended the secondary school in Craiova and in 1892 he gratuated from Carol I Highschool. He finished the Medicine Faculty in Bucharest, obtaining a PhD in medicine and surgery of the University of Bucharest [2] in 1898.
+
+He served his apprenticeship at the children hospital in Bucharest for 3 years and then working for Mărcuţa Hospital for one year and a half; doctor Charles Laugier was drawn from the very beginning to the social medicine, dedicating himself to the study of Hygiene, as his wish was to become hygienist [3].
+
+In 1900, he was appointed doctor in Olteţu de Sus and Olteţu de Jos regions from Romanaţi County and in the same year on 27-th September, he was relocated in the same position in the Ocolu region of the Dolj County [4].]]></Bio>
+<Doc Picture><![CDATA[profile-picture-64a07e25aae3e959536292.png]]></Doc Picture>
+<Doc Address><![CDATA[40 East 88 street]]></Doc Address>
+<Created At><![CDATA[Sat, 01 Jul 2023 19:27:33 +0000]]></Created At>
+</data>
+<data>
+<Id><![CDATA[6]]></Id>
+<Email><![CDATA[gciiii@gmail.com]]></Email>
+<Roles><![CDATA[[ROLE_DOCTOR]]]></Roles>
+<Password><![CDATA[Meliodas2233]]></Password>
+<Doc First Name><![CDATA[chibani]]></Doc First Name>
+<Doc Last Name><![CDATA[chibannn]]></Doc Last Name>
+<Specialization><![CDATA[hmidaaaa]]></Specialization>
+<Doc Phone Number><![CDATA[0641945350]]></Doc Phone Number>
+<Bio><![CDATA[askjdhaskjdhkh]]></Bio>
+<Doc Picture><![CDATA[/tmp/phpYk6EGR]]></Doc Picture>
+<Doc Address><![CDATA[40 East 88 street]]></Doc Address>
+<Created At><![CDATA[]]></Created At>
+</data>
+<data>
+<Id><![CDATA[7]]></Id>
+<Email><![CDATA[Lbouhali@gmail.com]]></Email>
+<Roles><![CDATA[[ROLE_DOCTOR]]]></Roles>
+<Password><![CDATA[Meliodas223]]></Password>
+<Doc First Name><![CDATA[Ahmed]]></Doc First Name>
+<Doc Last Name><![CDATA[Lbouhali]]></Doc Last Name>
+<Specialization><![CDATA[hmidaa]]></Specialization>
+<Doc Phone Number><![CDATA[0641945350]]></Doc Phone Number>
+<Bio><![CDATA[SISISISISISISIS]]></Bio>
+<Doc Picture><![CDATA[/tmp/php6UaBK1]]></Doc Picture>
+<Doc Address><![CDATA[40 East 88 street]]></Doc Address>
+<Created At><![CDATA[]]></Created At>
+</data>
+<data>
+<Id><![CDATA[8]]></Id>
+<Email><![CDATA[Mohamedamini741@gmail.com]]></Email>
+<Roles><![CDATA[[ROLE_DOCTOR]]]></Roles>
+<Password><![CDATA[Meliodas223]]></Password>
+<Doc First Name><![CDATA[Ahmed]]></Doc First Name>
+<Doc Last Name><![CDATA[Amini]]></Doc Last Name>
+<Specialization><![CDATA[tikchbila tiwliwla]]></Specialization>
+<Doc Phone Number><![CDATA[0623426660]]></Doc Phone Number>
+<Bio><![CDATA[Hmida rass lmida]]></Bio>
+<Doc Picture><![CDATA[omarlhmar-6462172a3b007464678862.jpg]]></Doc Picture>
+<Doc Address><![CDATA[40 East 88 street]]></Doc Address>
+<Created At><![CDATA[]]></Created At>
+</data>
+<data>
+<Id><![CDATA[11]]></Id>
+<Email><![CDATA[Mohamedamini743@gmail.com]]></Email>
+<Roles><![CDATA[[ROLE_DOCTOR]]]></Roles>
+<Password><![CDATA[$2y$13$clrmYzbilO8bmIV2ejO/n.EeNtBl7pzuRgN3.W81itg.KyWYu0g5e]]></Password>
+<Doc First Name><![CDATA[Mohamed]]></Doc First Name>
+<Doc Last Name><![CDATA[Amini]]></Doc Last Name>
+<Specialization><![CDATA[Nephrologie]]></Specialization>
+<Doc Phone Number><![CDATA[0623429956]]></Doc Phone Number>
+<Bio><![CDATA[HMiodaaaaaaaaaaaaaaaaaaaaaa]]></Bio>
+<Doc Picture><![CDATA[images-64a07cfdb5be1211309823.jpeg]]></Doc Picture>
+<Doc Address><![CDATA[40 East 88 street]]></Doc Address>
+<Created At><![CDATA[Thu, 18 May 2023 20:33:28 +0000]]></Created At>
+</data>
+<data>
+<Id><![CDATA[12]]></Id>
+<Email><![CDATA[test048@gmail.com]]></Email>
+<Roles><![CDATA[[ROLE_DOCTOR]]]></Roles>
+<Password><![CDATA[$2y$10$raloVD8a8beX5K9RTNc4L..A9igKUGAMl5/r1PdXF6ZgPiWY3orGW]]></Password>
+<Doc First Name><![CDATA[ahmed]]></Doc First Name>
+<Doc Last Name><![CDATA[labhjawi]]></Doc Last Name>
+<Specialization><![CDATA[Medicine]]></Specialization>
+<Doc Phone Number><![CDATA[0715929231]]></Doc Phone Number>
+<Bio><![CDATA[Wahd Hmar gdo gdach]]></Bio>
+<Doc Picture><![CDATA[3048911-64636836ece17718406481.jpg]]></Doc Picture>
+<Doc Address><![CDATA[40 East 88 street]]></Doc Address>
+<Created At><![CDATA[]]></Created At>
+</data>
+<data>
+<Id><![CDATA[14]]></Id>
+<Email><![CDATA[test017@gmail.com]]></Email>
+<Roles><![CDATA[[ROLE_DOCTOR]]]></Roles>
+<Password><![CDATA[$2y$10$mBEYUB1n2PlU4xYf.hntu.CGOu7LyLrjx2iRSdjt3qj3QhlRKyrze]]></Password>
+<Doc First Name><![CDATA[JAJA]]></Doc First Name>
+<Doc Last Name><![CDATA[HICHAM]]></Doc Last Name>
+<Specialization><![CDATA[HMOAA]]></Specialization>
+<Doc Phone Number><![CDATA[0645952360]]></Doc Phone Number>
+<Bio><![CDATA[WAAAAAAAAAAAAAAAAAAAAAHD HMAR]]></Bio>
+<Doc Picture><![CDATA[opera-snapshot-2023-04-30-011254-www-omegle-com-64636a5c639d6295935297.png]]></Doc Picture>
+<Doc Address><![CDATA[40 East 88 street]]></Doc Address>
+<Created At><![CDATA[Tue, 16 May 2023 11:34:52 +0000]]></Created At>
+</data>
+</datas>

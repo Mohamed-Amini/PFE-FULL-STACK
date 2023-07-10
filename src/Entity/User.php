@@ -7,14 +7,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+#[UniqueEntity(fields: ['PhoneNumber'], message: 'There is already an account with this PhoneNumber')]
+#[Vich\Uploadable]
+class User implements UserInterface, PasswordAuthenticatedUserInterface, Serializable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -42,6 +46,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 20)]
     private ?string $PhoneNumber = null;
 
+    #[Vich\UploadableField(mapping: 'doctors', fileNameProperty: 'UserPicture')]
+    private ?File $UserPictureFile = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $UserPicture = 'profile-picture-64a07e25aae3e959536292.png';
+
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $DateofBirth = null;
 
@@ -51,9 +61,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Doctors::class, mappedBy: 'TreatedUsers')]
     private Collection $TreatingDoctors;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Appointment::class , cascade: ['remove'])]
+    private Collection $appointments;
+
     public function __construct()
     {
         $this->TreatingDoctors = new ArrayCollection();
+        $this->appointments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -131,6 +145,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->FirstName;
     }
 
+    public function __toString(): string
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName();
+    }
+
     public function setFirstName(string $FirstName): self
     {
         $this->FirstName = $FirstName;
@@ -162,19 +181,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getFullName(): string 
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName();  
+    }
+
     public function getDateofBirth(): ?\DateTimeInterface
     {
         return $this->DateofBirth;
     }
+    public function setDateofBirth(\DateTimeInterface $DateofBirth): self {
+         $this->DateofBirth = $DateofBirth; return $this; 
+        }
 
-    public function setDateofBirth(\DateTimeInterface $DateofBirth): self
-    {
-        $this->DateofBirth = $DateofBirth;
-
-        return $this;
-    }
-
-    public function isVerified(): bool
+    public function getIsVerified(): bool
     {
         return $this->isVerified;
     }
@@ -186,30 +206,111 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Doctors>
-     */
     public function getTreatingDoctors(): Collection
     {
         return $this->TreatingDoctors;
     }
 
-    public function addTreatingDoctor(Doctors $treatingDoctor): self
+    public function addTreatingDoctor(Doctors $doctor): self
     {
-        if (!$this->TreatingDoctors->contains($treatingDoctor)) {
-            $this->TreatingDoctors->add($treatingDoctor);
-            $treatingDoctor->addTreatedUser($this);
+        if (!$this->TreatingDoctors->contains($doctor)) {
+            $this->TreatingDoctors[] = $doctor;
+            $doctor->addTreatedUser($this);
         }
 
         return $this;
     }
 
-    public function removeTreatingDoctor(Doctors $treatingDoctor): self
+    public function removeTreatingDoctor(Doctors $doctor): self
     {
-        if ($this->TreatingDoctors->removeElement($treatingDoctor)) {
-            $treatingDoctor->removeTreatedUser($this);
+        if ($this->TreatingDoctors->removeElement($doctor)) {
+            $doctor->removeTreatedUser($this);
         }
 
         return $this;
+    }
+
+    public function getAppointments(): Collection
+    {
+        return $this->appointments;
+    }
+
+    public function addAppointment(Appointment $appointment): self
+    {
+        if (!$this->appointments->contains($appointment)) {
+            $this->appointments[] = $appointment;
+            $appointment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAppointment(Appointment $appointment): self
+    {
+        if ($this->appointments->removeElement($appointment)) {
+            // set the owning side to null (unless already changed)
+            if ($appointment->getUser() === $this) {
+                $appointment->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUserPicture(): ?string
+    {
+        return $this->UserPicture;
+    }
+
+    public function setUserPicture(?string $UserPicture): self
+    {
+        $this->UserPicture = $UserPicture;
+
+        return $this;
+    }
+
+    public function getUserPictureFile(): ?File
+    {
+        return $this->UserPictureFile;
+    }
+
+    public function setUserPictureFile(?File $UserPictureFile = null): self
+    {
+        $this->UserPictureFile = $UserPictureFile;
+        return $this;
+    }
+
+    public function serialize(): string
+    {
+        return serialize([
+            $this->id,
+            $this->email,
+            $this->roles,
+            $this->password,
+            $this->FirstName,
+            $this->LastName,
+            $this->PhoneNumber,
+            $this->UserPicture,
+            $this->DateofBirth,
+            $this->isVerified,
+            // add other properties that you want to serialize here...
+        ]);
+    }
+
+    public function unserialize($serialized): void
+    {
+        [
+            $this->id,
+            $this->email,
+            $this->roles,
+            $this->password,
+            $this->FirstName,
+            $this->LastName,
+            $this->PhoneNumber,
+            $this->UserPicture,
+            $this->DateofBirth,
+            $this->isVerified,
+            // add other properties that you want to unserialize here...
+        ] = unserialize($serialized);
     }
 }

@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Void_;
+use Serializable;
 use Symfony\Component\HttpFoundation\File\File; 
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -15,7 +15,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: DoctorsRepository::class)]
 #[Vich\Uploadable]
-class Doctors implements UserInterface, PasswordAuthenticatedUserInterface
+class Doctors implements UserInterface, PasswordAuthenticatedUserInterface , Serializable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -53,7 +53,7 @@ class Doctors implements UserInterface, PasswordAuthenticatedUserInterface
     private ?File $DocPictureFile = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $DocPicture = null;
+    private ?string $DocPicture = 'profile-picture-64a07e25aae3e959536292.png';
 
     #[ORM\Column(length: 255)]
     private ?string $DocAddress = null;
@@ -61,9 +61,17 @@ class Doctors implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'TreatingDoctors')]
     private Collection $TreatedUsers;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\OneToMany(mappedBy: 'doctor', targetEntity: Appointment::class)]
+    private Collection $appointments;
+
+
     public function __construct()
     {
         $this->TreatedUsers = new ArrayCollection();
+        $this->appointments = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -271,4 +279,86 @@ class Doctors implements UserInterface, PasswordAuthenticatedUserInterface
 
         $this->setDocPicture($this->getDocPictureFile()->getFilename());
     }
+    
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    #[ORM\PrePersist]
+    public function setCreatedAt(): void 
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
+
+    /**
+     * @return Collection<int, Appointment>
+     */
+    public function getAppointments(): Collection
+    {
+        return $this->appointments;
+    }
+
+    public function addAppointment(Appointment $appointment): self
+    {
+        if (!$this->appointments->contains($appointment)) {
+            $this->appointments->add($appointment);
+            $appointment->setDoctor($this);
+        }
+
+        return $this;
+    }
+
+    public function getFullName(): string 
+{
+    return $this->getDocFirstName() . ' ' . $this->getDocLastName();  
+}
+
+    public function removeAppointment(Appointment $appointment): self
+    {
+        if ($this->appointments->removeElement($appointment)) {
+            // set the owning side to null (unless already changed)
+            if ($appointment->getDoctor() === $this) {
+                $appointment->setDoctor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function serialize(): string
+    {
+        return serialize([
+            $this->id,
+            $this->email,
+            $this->roles,
+            $this->password,
+            $this->DocFirstName,
+            $this->DocLastName,
+            $this->DocPhoneNumber,
+            $this->DocPicture,
+            $this->DocAddress,
+            $this->Bio,
+            // add other properties that you want to serialize here...
+        ]);
+    }
+
+    public function unserialize($serialized): void
+    {
+        [
+            $this->id,
+            $this->email,
+            $this->roles,
+            $this->password,
+            $this->DocFirstName,
+            $this->DocLastName,
+            $this->DocPhoneNumber,
+            $this->DocPicture,
+            $this->DocAddress,
+            $this->Bio,
+            // add other properties that you want to unserialize here...
+        ] = unserialize($serialized);
+    }
+
 }

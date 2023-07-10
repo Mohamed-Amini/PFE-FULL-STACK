@@ -1,0 +1,25 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Doctor Profile{% endblock %}
+
+{% block body %}
+    <h1>Doctor Profile</h1>
+
+    {{ form_start(form) }}
+        
+        {{ form_row(form.docFirstName) }}
+        {{ form_row(form.docLastName) }}
+        {{ form_row(form.specialization) }}
+        {{ form_row(form.docPhoneNumber) }}
+        {{ form_row(form.bio) }}
+        {{ form_row(form.docAddress) }}
+        {{ form_row(form.DocPictureFile) }}
+        <button class="btn btn-primary">Update Profile</button>
+    {{ form_end(form) }}
+{% endblock %} #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div {{ react_component('DoctorProfile') }}></div>
+{% endblock %}

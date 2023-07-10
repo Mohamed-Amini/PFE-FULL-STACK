@@ -1,0 +1,46 @@
+{# <h1>
+
+PRofile Of the user
+</h1>
+
+{{ form_start(form) }}
+
+{{ form_widget(form.UserPictureFile) }}
+
+
+{{ form_widget(form.firstName) }}
+<br>
+<br>
+{{ form_widget(form.lastName) }}
+<br>  
+<br>
+{{ form_widget(form.email) }}     
+<br>
+<br>  
+{{ form_widget(form.plainPassword) }}       
+<br>   
+<br>       
+{{ form_widget(form.DateofBirth) }}       
+<br>
+<br>
+{{ form_widget(form.PhoneNumber) }}
+
+<br>
+<br>
+
+<button type="submit">Save</button>
+{{ form_end(form) }}
+
+
+{% if user.isVerified %}
+   Verified    
+{% else %}
+   Not verified  
+{% endif %} 
+ #}
+
+ {% extends 'base.html.twig' %}
+
+{% block body %}
+    <div {{ react_component('UserProfile') }}></div>
+{% endblock %}

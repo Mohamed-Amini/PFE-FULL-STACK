@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Medical Reports</h1>
+
+    <ul>
+        {% for appointment in appointments %}
+            {% if appointment.StripePayment is not null%}
+            <li>
+                <a href="{{ path('medical_report_show', {'id': appointment.id}) }}">
+                    Appointment with {{ appointment.user.FullName }} ({{ appointment.appointmentDate|date('Y-m-d') }})
+                </a>  
+            </li>    
+            {% endif %}
+        {% endfor %}      
+    </ul>
+{% endblock %}

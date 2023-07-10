@@ -1,0 +1,26 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Book an appointment{% endblock %}
+
+{% block body %}
+{% if form_errors(form) %}
+    <div class="alert alert-danger">
+        {{ form_errors(form) }}
+    </div>
+{% endif %}
+    <h1>Book an appointment</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+
+    <button type="submit" class="btn btn-primary">Book appointment</button>
+
+    {{ form_end(form) }}
+{% endblock %}   #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div {{ react_component('Booking') }}></div>
+{% endblock %}

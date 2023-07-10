@@ -1,5 +1,9 @@
 sonata_admin:
-    title_logo: images/dashboard/Clinique-Logo.png
+    title: KENISIS
+    title_logo: images/dashboard/Icon.svg
+    assets:
+        extra_javascripts:
+            - bundles/fosckeditor/ckeditor.js
     dashboard:
         blocks:
             - position: left
@@ -9,9 +13,13 @@ sonata_admin:
               settings:
                   content: >
                       <div style="background-color: #f2f2f2; border-radius: 5px;">
-                          <h2 style="font-size: 28px;  text-align: center;">Welcome to the Admin</h2>
-                          <p style="font-size: 16px; line-height: 1.5;">As an <code>admin</code>, you have access to a variety of tools and features that allow you to manage and customize your website. You can create and edit pages, manage <code>users</code> and <code>permissions</code>, and much more. To get started, explore the menu on the left and click on the section you want to work on.</p>
-                          <p style="font-size: 16px; line-height: 1.5;">This is also the only place where you can add <code>doctors</code> and assign them a <code>role</code>. To get started, click on the <code>Doctors</code> section in the left menu and use the form to add new doctors and assign them a role.</p>
+                           <h2 style="font-size: 28px; text-align: center;">Welcome to the Admin</h2>
+                        <h3>Instructions</h3>
+                        <p style="font-size: 16px; line-height: 1.5;">As an <code>admin</code>, you have access to a variety of tools and features that allow you to manage and customize your website. You can create and edit pages, manage <code>users</code> and <code>permissions</code>, and much more. To get started, explore the menu on the left and click on the section you want to work on.</p>
+                        <p style="font-size: 16px; line-height: 1.5;">This is also the only place where you can add <code>doctors</code> and assign them a <code>role</code>. To get started, click on the <code>Doctors</code> section in the left menu and use the form to add new doctors and assign them a role.</p>
+                        <p style="font-size: 16px; line-height: 1.5;">You can also see all the <code>appointments</code> that have been made by users, along with their payment status. To view appointments, click on the <code>Appointments</code> section in the left menu.</p>
+                        <p style="font-size: 16px; line-height: 1.5;">If you want to view the messages sent by users to the administration of the website, click on the <code>Contact</code> section in the left menu.</p>
+                        <p style="font-size: 16px; line-height: 1.5;">Finally, the <code>Medical Reports</code> section allows you to view the medical reports created by doctors for each patient. It is mandatory for doctors to create a medical report for each patient after every call. You can view the reports by clicking on the <code>Medical Reports</code> section in the left menu.</p>
                       </div>
               roles: [ROLE_ADMIN]
 
@@ -20,3 +28,11 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts:
                 - admin
+sonata_formatter:
+    default_formatter: text
+    formatters:
+        text:
+            service: sonata.formatter.text.text
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist

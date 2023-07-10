@@ -1,7 +1,10 @@
-{% if value %}
-    <div style="display: flex; justify-content: center;">
-        <img src="{{ vich_uploader_asset(object, 'DocPictureFile') }}" alt="{{ field_description.label }}" style="max-height: 500px; max-width: 500px; margin: auto;">
-    </div>
-{% else %}
-    <span class="label label-warning">No image</span>
-{% endif %}
+
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+
+{% block field %}
+    {% if value %}
+        <img src="{{ vich_uploader_asset(object, 'DocPictureFile') }}" alt="{{ field_description.label }}" style="height: 50px; width: 50px; border-radius: 50%;">
+    {% else %}
+        <span class="label label-warning">No image</span>
+    {% endif %}
+{% endblock %}

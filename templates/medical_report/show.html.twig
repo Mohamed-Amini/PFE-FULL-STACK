@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Medical Report for Appointment with {{ patient.FullName }}</h1>
+
+    <p> Appointment : {{ appointment.id }}
+    <p>Appointment Date: {{ appointment.appointmentDate|date('Y-m-d') }}</p>
+    <p> Patient Name : {{ patient.FullName }} </p>
+    <p> Patient BirthDay : {{ patient.DateofBirth|date('Y-m-d') }} </p>
+
+<p>Patient Age: {{ age }} years old</p>
+
+    <p> 
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button>Submit</button>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body{
+    background: #cfd2db;
+    font-family: 'General Sans', sans-serif;
+    box-sizing: border-box;
+
+}
+.section1{
+    background-image: url(../react/controllers/images/1.jpg);
+    background-size: cover;   
+    background-position: center right;
+}
+.section2{
+    background-image: url(../react/controllers/images/2.jpg);
+    background-size: cover;
+    /* background-position: center; */
+}
+.section2cover{
+    background: radial-gradient(63.06% 63.06% at 50% 36.94%, rgba(37, 39, 51, 0) 0%, rgba(37, 39, 51, 0.3) 100%);
+}
+.section2div{
+    background-image: url(../react/controllers/images/2.5.jpg);
+    background-size: cover;
+    background-position: right;
+}
+.section2appel{
+    transform: matrix(-0.74, 0.67, -0.74, -0.67, 0, 0)
+}
+.Section3{
+    background-image: url(../react/controllers/images/3.png);
+    background-size: cover;
+}
+.Section3dev{
+    background: linear-gradient(180deg, rgba(37, 39, 51, 0.152) 0%, rgba(37, 39, 51, 0.4) 100%);
+    backdrop-filter: blur(22.5px);
+}
+.content{
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0,1,0,1);
+}
+.shwo{
+    height: auto;
+    max-height:999px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(1,0,1,0);
+}
+.sliders{
+    background: radial-gradient(99.47% 50% at 50% 50%, #252733 0%, rgba(37, 39, 51, 0) 0.01%, #252733 100%, #252733 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    opacity: 0.4;
+}
+.imageSlider{
+    object-fit: fill;
+}
+.docteur{
+    background: linear-gradient(73.74deg, rgba(0, 70, 255, 0.74) 0%, #0046FF 72.91%, rgba(0, 70, 255, 0.67) 100%);
+    box-shadow: 0px 3px 51px 0px rgba(192, 200, 221, 0.50);
+
+}
+.divdocteur{
+    background: rgba(255, 255, 255, 0.30);
+}
+.start{
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+  
+  .img4 {
+    display: block;
+    margin: 0 auto;
+    z-index: 1;
+  }
+  .about3{
+    background: url(../react/controllers/images/about3.png);
+    background-size: cover;
+    background-position: center;
+  }
+  .about4{
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
+
+  }
+  .contact1{
+    background: url(../react/controllers/images/contact1.png);
+    background-position: center;
+    background-size: cover;
+  }
+  .backround{
+    background: #FFFFFF63;
+  }
+  .backg{
+    background: url(../react/controllers/images/a.jpg);
+    background-position: center;
+  }
+  .backg2{
+    background:url(../react/controllers/images/news23.png);
+    background-position: center;
+    background-size: cover;
+  }
+  .newsbg{
+    background: url(../react/controllers/images/news3.png);
+    background-size: cover;
+  }
+
+  .btnnew4{
+    background: #FFFFFF66;
+
+  }
+  .serbg{
+    background: url(../react/controllers/images/services1.jpg);
+    background-size: cover;
+  }
+  .servespic3{
+    background: url(../react/controllers/images/services3.png);
+    background-size: cover;
+  }

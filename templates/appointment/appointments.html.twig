@@ -1,0 +1,79 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Appointments{% endblock %}
+
+
+{% block body %}
+
+
+    <h1>Appointments</h1>
+
+{% if appointments is not empty %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.user.FullName }}</td>
+                    <td>{{ appointment.appointmentDate|date('Y-m-d H:i:s') }}</td>
+    {% if appointment.stripePayment is not empty %}  
+     <td>Paid</td>   
+     <td>
+       <a href="{{ path('doctor_start_call', {'id': appointment.id}) }}" class="btn btn-primary btn-start-call">
+    Start Call
+    </a>
+     </td>
+    {% else %}
+     <td style="color: red;">The Patient did not pay</td> 
+    {% endif %}     
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No appointments found.</p>
+{% endif %}
+{% endblock %}
+
+
+
+{% block javascripts %}
+  {{ parent() }}
+<script src='https://meet.jit.si/external_api.js'></script>
+
+<script>  
+const token = window.location.pathname.match(/\w{32}/)[0];
+    var options = {
+        roomName: 'JitsiMeetApiExample',
+        width: 700,
+        height: 700, 
+        jwt: token  , 
+        configOverwrite: {
+            maxNumberOfParticipants: 2,
+            disableInviteFunctions: true
+        }   
+    };
+    
+  var api = new JitsiMeetExternalAPI("{{ jitsi_domain }}", options); 
+
+const meetLinks = document.querySelectorAll('.btn-start-call');
+meetLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    api.executeCommand('join');      
+  });   
+})
+  })  
+  </script>
+{% endblock %} #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div {{ react_component('DoctorAppointments') }}></div>
+{% endblock %}

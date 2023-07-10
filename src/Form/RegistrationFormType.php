@@ -58,6 +58,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('DateofBirth', DateType::class, [
+                'widget' => 'single_text',
                 'label' => 'Date of Birth',
                 'years' => range(1900, date('Y')),
                 'constraints' => [
@@ -95,6 +96,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'csrf_protection' => false,
         ]);
     }
 }
