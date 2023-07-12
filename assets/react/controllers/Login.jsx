@@ -75,15 +75,6 @@ export default function LoginUser(props) {
                 Log in here
               </a>
             </p>
-
-            <p className="font-semibold text-base text-center mt-4 text-[#5E5E60]">
-              <a
-                href="/forgot-password"
-                className="text-[#1B53F5] cursor-pointer"
-              >
-                Reset Password
-              </a>
-            </p>
           </form>
         </div>
       </div>

@@ -16,7 +16,7 @@ export default function Sec3() {
                 <p className='font-sans text-[#1E2538]'>Online physiotherapy eliminates geographical barriers, allowing individuals from remote areas or those with limited mobility to access professional care without the need for in-person visits. It ensures that patients can receive physiotherapy services regardless of their location, making healthcare more inclusive and accessible for all.</p>
                 {/* <button>Learn more</button> */}
                 <button className='text-xl font-medium text-[#FFFFFF] w-[240px] py-2 rounded-[20px] bg-[#2560FE] flex items-center justify-between pl-14 relative mt-6 max-[900px]:mx-auto'>
-                Learn more
+                Learn more <a href='/services'></a>
         <div className='absolute right-2 bg-[#648CFF] w-8 h-8 flex justify-center items-center rounded-[50%] text-white'>
       <FaChevronRight></FaChevronRight>
         </div>

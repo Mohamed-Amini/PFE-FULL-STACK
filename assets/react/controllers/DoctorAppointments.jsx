@@ -67,14 +67,14 @@ export default function DashbordUi({ appointments, jitsiDomain }) {
           </td>
           <td className="w-1/4">{new Date(appointment.appointmentDate).toLocaleString()}</td>
           <td className="w-1/4">
-            {appointment.stripePayment ? (
+            {appointment.stripePayment === '600 MAD'  ?(
               <span>Paid</span>
             ) : (
               <span style={{ color: 'red' }}>The patient did not pay</span>
             )}
           </td>
           <td className="w-1/4">
-            {appointment.stripePayment && (
+            {appointment.stripePayment === '600 MAD' &&(
               <a href={`/doctor/start_call/${appointment.id}`} className="btn btn-primary btn-start-call">
                 Start Call
               </a>

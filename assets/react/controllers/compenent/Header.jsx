@@ -47,7 +47,7 @@ export default function Header() {
             <div className='flex gap-4 items-center max-[800px]:hidden'>
               <a
                 href='/home'
-                className={`py-2 px-4 ${
+                className={`py-2 px-4  ${
                   page === '/home' ? 'bg-[#1B53F5] px-4 rounded-xl py-2 text-white' : ''
                 }`}
                 style={{ textDecoration: 'none', color: '#000000' }}
@@ -108,7 +108,7 @@ export default function Header() {
                 <MenuOpenIcon onClick={responsiveHandler2}></MenuOpenIcon>
               </div>
             </div>
-            <div className='flexgap-4 items-center flex-col mt-6 w-full '>
+            <div className='flex gap-4 items-center flex-col mt-6 w-full '>
               <a
                 href='/home'
                 className={`py-2 px-4 ${

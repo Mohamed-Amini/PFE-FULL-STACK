@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { a } from 'react-router-dom';
 
 export default function Settingsidebar(props) {
   const [selected, setSelected] = useState(0);
@@ -18,11 +18,11 @@ export default function Settingsidebar(props) {
         {/* <p className={`font-sans font-medium text-base cursor-pointer ${selected === 3 ? 'text-[#1B53F5]' : ''}`} onClick={() => handleClick(3)}>Privacy & Terms</p> */}
         {/* <p className={`font-sans font-medium text-base cursor-pointer ${selected === 4 ? 'text-[#1B53F5]' : ''}`} onClick={() => handleClick(4)}>Sign Out</p> */}
 
-        <Link to='/Dashbord/Setting' className={`font-sans font-medium text-base cursor-pointer ${selected === 0 ? 'text-[#1B53F5]' : ''}`} onClick={() => handleClick(0)}>My Profile</Link>
-        <Link to='/Dashbord/MedicalReports' className={`font-sans font-medium text-base cursor-pointer ${selected === 1 ? 'text-[#1B53F5]' : ''}`} onClick={() => handleClick(1)}>Medical Reports</Link>
-        {/* <Link to='/Dashbord/AppointmentReport' className={`font-sans font-medium text-base cursor-pointer ${selected === 2 ? 'text-[#1B53F5]' : ''}`} onClick={() => handleClick(0)}> Appointment Report </Link> */}
-        <Link to='/Dashbord/Privacy1' className={`font-sans font-medium text-base cursor-pointer ${selected === 2 ? 'text-[#1B53F5]' : ''}`} onClick={() => handleClick(2)}>Privacy & Terms</Link>
-        <Link to='/Login/docteur' className={`text-[#ff2e2e] font-sans font-medium text-base cursor-pointer ${selected === 3 ? 'text-[#ff2e2e]' : ''}`} onClick={() => handleClick(3)}>Sign Out</Link>
+        <a href='/doctor/profile' className={`font-sans font-medium text-base cursor-pointer ${selected === 0 ? 'text-[#1B53F5]' : ''}`} onClick={() => handleClick(0)}>My Profile</a>
+        <a href='/doctor/medical/reports' className={`font-sans font-medium text-base cursor-pointer ${selected === 1 ? 'text-[#1B53F5]' : ''}`} onClick={() => handleClick(1)}>Medical Reports</a>
+        {/* <a href='/Dashbord/AppointmentReport' className={`font-sans font-medium text-base cursor-pointer ${selected === 2 ? 'text-[#1B53F5]' : ''}`} onClick={() => handleClick(0)}> Appointment Report </a> */}
+        <a href='/doctor/Terms' className={`font-sans font-medium text-base cursor-pointer ${selected === 2 ? 'text-[#1B53F5]' : ''}`} onClick={() => handleClick(2)}>Privacy & Terms</a>
+        <a href='/Login/docteur' className={`text-[#ff2e2e] font-sans font-medium text-base cursor-pointer ${selected === 3 ? 'text-[#ff2e2e]' : ''}`} onClick={() => handleClick(3)}>Sign Out</a>
       </div>
     </div>
   )

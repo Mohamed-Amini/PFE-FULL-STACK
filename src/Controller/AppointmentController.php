@@ -172,4 +172,8 @@ class AppointmentController extends AbstractController
         return $this->render('appointment/Terms.html.twig', []);
     }
     
+    #[Route('/doctor/Terms' , name: 'app_doctor_terms')]
+    public function DoctorTerms(){
+        return $this->render('appointment/DocTerms.html.twig', []);
+    }
 }
