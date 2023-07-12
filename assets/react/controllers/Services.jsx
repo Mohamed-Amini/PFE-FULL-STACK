@@ -4,7 +4,7 @@ import Footer from './compenent/Footer'
 import ServicesComponent from './compenent/Services/ServicesComponent'
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 
-export default function News() {
+export default function Services() {
   return (
     <>
     <Router>

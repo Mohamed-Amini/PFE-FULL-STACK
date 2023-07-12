@@ -3,7 +3,7 @@
         <img src="{{ vich_uploader_asset(object, 'DocPictureFile') }}" alt="{{ field_description.label }}" style="max-height: 500px; max-width: 500px; margin: auto; border-radius: 50%;">
     </div>
 {% else %}
-    <span class="label label-warning">No image</span>
+    <div style="display: flex; justify-content: center; ">
+        <img src="https://cdn-icons-png.flaticon.com/512/456/456212.png" alt="No image" style="max-height: 500px; max-width: 500px; margin: auto; border-radius: 50%;">
+    </div>
 {% endif %}
-
-

@@ -75,5 +75,5 @@ meetLinks.forEach(link => {
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div {{ react_component('DoctorAppointments') }}></div>
+    <div {{ react_component('DoctorAppointments', { appointments: appointmentsData }) }}></div>
 {% endblock %}

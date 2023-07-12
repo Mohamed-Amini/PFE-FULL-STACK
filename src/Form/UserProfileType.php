@@ -12,7 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+    use Vich\UploaderBundle\Form\Type\VichImageType;
 
 
 class UserProfileType extends AbstractType
@@ -68,12 +68,12 @@ class UserProfileType extends AbstractType
                         'message' => 'Password should be at least 8 characters long and contain at least one letter and one number'
                     ])
                 ]
-            ])
-            ->add('DateofBirth', DateType::class, [
-                'label' => 'disabled',
-                'widget' => 'single_text', 
-                'format' => 'yyyy-MM-dd'    
-            ]);
+                    ]);
+            // ->add('DateofBirth', DateType::class, [
+            //     'label' => 'disabled',
+            //     'widget' => 'single_text', 
+            //     'format' => 'yyyy-MM-dd'    
+            // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -1,13 +1,12 @@
 import React from 'react'
 import Cadr from './Ui/Cadr'
-import { Link } from 'react-router-dom';
 import image from '../images/whitefooter.svg';
 
 
 
 export default function Footer() {
   return (
-    <Cadr>
+<Cadr>
     <div className='bg-[#252733] rounded-3xl px-10 py-6'>
       <div className='flex justify-between max-[900px]:flex-col'>
       <div>
@@ -23,24 +22,24 @@ export default function Footer() {
         <div className=' mt-10  max-[900px]:mt-2'>
         <div className=' mt-10  max-[900px]:mt-2 '>
               <div>
-                <Link to="/" className=' hover:text-[#8D8F9C] text-[#FCFCFE] font-medium text-sm mt-2'>Home</Link>
+                <a href="/home" className=' hover:text-[#8D8F9C] text-[#FCFCFE] font-medium text-sm mt-2'>Home</a>
               </div>
               <div>
-                <Link to="/about" className=' hover:text-[#8D8F9C] text-[#FCFCFE] font-medium text-sm mt-2'>About Us</Link>
+                <a href="/about" className=' hover:text-[#8D8F9C] text-[#FCFCFE] font-medium text-sm mt-2'>About Us</a>
               </div>
               <div>
-                <Link to="/services" className=' hover:text-[#8D8F9C] text-[#FCFCFE] font-medium text-sm mt-2'>Services</Link>
+                <a href="/services" className=' hover:text-[#8D8F9C] text-[#FCFCFE] font-medium text-sm mt-2'>Services</a>
               </div>
               <div>
-                <Link to="/news" className='hover:text-[#8D8F9C] text-[#FCFCFE] font-medium text-sm mt-2'>News</Link>
+                <a href="/news" className='hover:text-[#8D8F9C] text-[#FCFCFE] font-medium text-sm mt-2'>News</a>
               </div>
               <div>
-                <Link to="/contact" className='hover:text-[#8D8F9C] text-[#FCFCFE] font-medium text-sm mt-2'>Contact</Link>
+                <a href="/contact" className='hover:text-[#8D8F9C] text-[#FCFCFE] font-medium text-sm mt-2'>Contact</a>
               </div>
           </div>
         </div>
       </div>
-      <div className='my-2 max-[900px]:text-center'>
+<div className='my-2 max-[900px]:text-center'>
         <h1 className='text-[#8D8F9C] font-medium text-base text-center'>Get in touch</h1>
         <div  className=' mt-10 max-[900px]:mt-2'>
           <p className='text-[#FCFCFE] font-medium text-sm mt-2'>+212 665 235 448</p>
@@ -56,7 +55,7 @@ export default function Footer() {
           <p className=' hover:text-[#8D8F9C] text-[#FCFCFE] font-medium text-sm mt-2'>Twitter</p>
         </div>
       </div>
-    
+
     </div>
     <div className='bg-[#3B3E4C] text-white flex justify-between rounded-2xl py-2 px-5 mt-9 max-[800px]:flex-col max-[800px]:items-center'>
       <p className='text-[#FCFCFE] font-medium text-sm'>Privacy Policy</p>

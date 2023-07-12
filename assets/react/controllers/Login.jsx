@@ -3,6 +3,7 @@ import Input from "./compenent/Ui/Input";
 import Submit from "./compenent/Ui/Submit";
 import Inputwraper from "./compenent/Ui/Inputwrapp";
 import Sliders from "./compenent/Login/Sliders"
+import LOGO from './images/blackIogo.svg'
 import { BrowserRouter as Router } from "react-router-dom";
 
 export default function LoginUser(props) {
@@ -13,19 +14,16 @@ export default function LoginUser(props) {
       <div className="w-1/2 px-24 flex flex-col justify-center ">
         <div>
           <div className="mx-auto w-3/4 flex flex-col items-center gap-3 mb-10">
-            <div className="h-16 w-16 bg-[#DFE3EE] rounded-full mb-8"></div>
+          <img  className='h-16 w-16 rounded-full mb-8' src={LOGO} alt="" />
             <h1 className="font-semibold text-4xl leading-[20px]">
               Welcome Back To Login !
             </h1>
-            <p className="font-medium text-[14px] text-[#5D5F6C]">
-              Lorem ipsum dolor sit amet consectetur.
-            </p>
           </div>
           <form method="post">
             {error && (
-              <div className="alert alert-danger">
-                {error.messageKey}
-              </div>
+            <div className="alert alert-danger">
+            {error.messageKey ? error.messageKey : 'Invalid Credentials : Check you Password and Email '} 
+          </div>
             )}
 
             {props.app_user && (
@@ -61,7 +59,7 @@ export default function LoginUser(props) {
                 required
               />
               <a
-                href="/Login/forgitPawword"
+                href="/reset-password"
                 className="text-[#252733] cursor-pointer text-right mt-2 font-medium"
               >
                 Forgot Password ?

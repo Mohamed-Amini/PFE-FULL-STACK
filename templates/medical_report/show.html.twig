@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{# 
 
 {% block body %}
     <h1>Medical Report for Appointment with {{ patient.FullName }}</h1>
@@ -16,4 +16,11 @@
         {{ form_widget(form) }}
         <button>Submit</button>
     {{ form_end(form) }}
-{% endblock %}
+{% endblock %} #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div {{ react_component('MedicalReportPage' , { Appointmentid : Appointmentid , age : age , name : name , birth : birth , date : date})}}</div>
+
+{% endblock %} 

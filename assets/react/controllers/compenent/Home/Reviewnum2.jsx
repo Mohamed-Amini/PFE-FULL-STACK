@@ -5,11 +5,11 @@ import image1 from '../../images/reviews2.png'
 
 export default function Reviewnum2() {
   return (
-    <div className='w-3/4'>
+    <div className='w-3/4 max-[450px]:w-full'>
     <div>
     <img className='h-16 w-16 rounded-[50%] mb-4' src={image1} alt="" />
     </div>
-    <div  className='pl-24'>
+    <div  className='pl-24 max-[950px]:pl-2'>
       <div className='border-[1px] w-9 h-9 flex justify-center items-center rounded-full'>
         <img src={image} alt="" />
       </div>

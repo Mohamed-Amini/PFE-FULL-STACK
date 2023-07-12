@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div {{ react_component('Login') }}>
+    <div {{ react_component('Login', { last_username : last_username , error : error}) }}>
 {% endblock %}

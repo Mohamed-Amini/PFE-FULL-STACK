@@ -16,8 +16,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AppointmentController extends AbstractController 
 {
-    public function __construct() 
+    private $em;
+    public function __construct(EntityManagerInterface $em) 
     {
+        $this->em = $em;
     }
 
     #[Route('user/appointment', name: 'book_appointment')]
@@ -60,16 +62,27 @@ class AppointmentController extends AbstractController
                 ]],
                 'mode' => 'payment',
                 'success_url' => $this->generateUrl('appointment_payment_success', ['id' => $id] , UrlGeneratorInterface::ABSOLUTE_URL), 
-                'cancel_url' => $this->generateUrl('appointment_payment_cancel' , [] , UrlGeneratorInterface::ABSOLUTE_URL),
             ]);
         
             // Redirect the user to the Stripe payment page
             return $this->redirect($checkout_session->url);
         }  
-    
+
+        $doctors = $this->em->getRepository(Doctors::class)->findAll();
+
+        $doctorsData = array_map(function ($doctor) {
+            return [
+                'FullName' => $doctor->getFullName(),
+                'id' => $doctor->getId(),
+                'DocPictureFile' => $doctor->getDocPicture(),
+                'Specialization' => $doctor->getSpecialization(),
+            ];
+        }, $doctors);
+        
         return $this->render('appointment/book.html.twig', [
             'form' => $form->createView(),
-        ]);      
+            'doctors' => $doctorsData,
+        ]);   
     }
     
     #[Route('/doctor/appointments', name: 'doctor_appointments')]
@@ -88,8 +101,18 @@ class AppointmentController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
         
+        $appointmentsData = array_map(function ($appointment) {
+            return [
+                'id' => $appointment->getId(),
+                'appointmentDate' => $appointment->getAppointmentDate()->format('Y-m-d H:i:s'),
+                'stripePayment' => $appointment->getStripePayment(),
+                'fullName' => $appointment->getUser()->getFullName(),
+                'userPicture' => $appointment->getUser()->getUserPicture(),
+            ];
+        }, $appointments);
+    
         return $this->render('appointment/appointments.html.twig', [
-            'appointments' => $appointments,
+            'appointmentsData' => $appointmentsData,
             'jitsi_domain' => $this->getParameter('domain.jitsi.url'),
         ]);
     }
@@ -103,7 +126,7 @@ class AppointmentController extends AbstractController
         $entityManager->persist($appointment);
         $entityManager->flush();
         
-        return $this->redirectToRoute('user_appointment_success');
+        return $this->redirectToRoute('app_home');
     }
 
     #[Route('doctor/start_call/{id}', name: 'doctor_start_call')]
@@ -125,7 +148,7 @@ class AppointmentController extends AbstractController
             ->subject('Appointment Call Link')
             ->html($this->renderView(
                 'emails/call_link.html.twig', 
-                ['link' => 'https://' . $this->getParameter('domain.jitsi.url') . '/KenisisTherapieMeeting' . $appointment->getId() . '3Swd1sW8556sd' . $appointment->getUser()->getFullName() . 's66dAsdsa22asd' . $appointment->getDoctor()->getFullName()]
+                ['link' => $jitsilink]
             ))
         ;
         
@@ -144,8 +167,9 @@ class AppointmentController extends AbstractController
         return $this->redirectToRoute('book_appointment');
     }
 
-    #[Route('/Terms' , name: 'app_terms')]
+    #[Route('/user/Terms' , name: 'app_user_terms')]
     public function terms(){
         return $this->render('appointment/Terms.html.twig', []);
     }
+    
 }

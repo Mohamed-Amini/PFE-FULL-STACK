@@ -1,0 +1,6 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{# {{ appointments}} #}
+    <div {{ react_component('DashboardDoctor' , {username : username , appointments : appointments}) }}></div>
+{% endblock %}

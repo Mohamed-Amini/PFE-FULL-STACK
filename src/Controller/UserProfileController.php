@@ -32,8 +32,18 @@ class UserProfileController extends AbstractController
         } else {
             $this->addFlash('error', 'There were validation errors.');
         }
+        $ff = $user->getFirstName();
+        $wd = $user->getLastName();
+        $d1 = $user->getEmail();
+        $w8 = $user->getPhoneNumber();
+        $qx = $user->getDateofBirth();
+
         return $this->render('user_profile/index.html.twig', [
-            'user' => $user,
+            'firstname' => $ff,
+            'lastname' => $wd,
+            'email' => $d1,
+            'phone' => $w8,
+            'birthdate' => $qx,
             'form' => $form->createView()
         ]);
     }

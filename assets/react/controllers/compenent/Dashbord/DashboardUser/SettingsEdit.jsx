@@ -77,7 +77,7 @@ export default function SettingsEdite() {
 
       <div className='border-[1px] boder-[#9DA7C4] rounded-3xl px-10 py-8 my-5'>
         <div className='flex w-full justify-between'>
-          <p className='text-[#3D4253] font-semibold font-sans text-2xl'>
+          <p className='text-[#3D4253] font-semibold font-sans text-2xl'> 
             Personal Information
           </p>
           {isPersonalInfoEditable ? (

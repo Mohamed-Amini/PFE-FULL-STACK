@@ -6,7 +6,9 @@ import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom'
 import { useState } from 'react';
-export default function DashbordUi() {
+import Home1 from './Home1';
+export default function DashbordUi({doctor}) {
+    
     const path = useLocation()
     const [width,setwidth] = useState(false)
     const [name,setname] = useState('Dashboard')
@@ -44,14 +46,14 @@ export default function DashbordUi() {
                     <p className='text-[#3E4152] font-semibold text-3xl'>{name}</p>
                 </div>
                 <div className='flex items-center gap-3'>
-                    <p>Name user</p>
+                    <p>{doctor}</p>
                     <div className='h-10 w-10 rounded-full border-[1px] border-[#5D5F6C] flex justify-center items-center'>
                         <NotificationsIcon className='text-[#5D5F6C]'></NotificationsIcon>
                     </div>
                     <div className='h-10 w-10 rounded-full bg-[#D9D9D9]'></div>
                 </div>
     </div>
-            <Outlet></Outlet>
+    <Home1 doctor={doctor}></Home1>
         </div>
       
     </div>

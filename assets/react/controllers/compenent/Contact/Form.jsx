@@ -33,7 +33,7 @@ export default function Form() {
           </textarea>
           
 
-          {/* <textarea placeholder='Type your message...' type="text" id="phoneNumber" name="message" className=' w-[555px] h-[140px] rounded-[29px] border-slate-500 absolute top-[1095px] left-[675px] text-center' /> */}
+
         </div>
         <Submit value='Send Message'className='w-[561px] h-[40px] bg-blue-700 rounded-[24.75px] absolute top-[1260px] left-[680px]'></Submit>
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Sliders from './compenent/Login/Sliders'
 import Inputwraper from './compenent/Ui/Inputwrapp'
+import LOGO from './images/blackIogo.svg'
 import Input from './compenent/Ui/Input'
 import Submit from './compenent/Ui/Submit'
 import img1 from './images/check.png'
@@ -25,9 +26,9 @@ export default function ForgitPawword(props) {
             !send && (
                 <>
        <div className=' flex flex-col  gap-3 mb-10'>
-            <div className='h-16 w-16 bg-[#DFE3EE] rounded-full mb-8'></div>
+       <img  className='h-16 w-16 rounded-full mb-8' src={LOGO} alt="" />
             <h1 className='font-semibold text-4xl leading-[20px]'>Forgot password  ?</h1>
-            <p className='font-medium text-[14px] text-[#5D5F6C]'>Lorem ipsum dolor sit amet consectetur.</p>
+            <p className='font-medium text-[14px] text-[#5D5F6C]'></p>
             </div>
         <form action={props.action} method='post'>
             <Inputwraper>
@@ -36,10 +37,10 @@ export default function ForgitPawword(props) {
             </Inputwraper>
             <Submit value='Send'></Submit>
             <div className='flex justify-center'>
-                    <Link to='/Login' className='font-semibold text-base mt-4 text-[#5E5E60] cursor-pointer flex gap-4 items-center'>
+                    <a href='/login' className='font-semibold text-base mt-4 text-[#5E5E60] cursor-pointer flex gap-4 items-center'>
                         <img src={arrow} alt="" className='h-4' />
                         Back to Log In
-                    </Link>
+                    </a>
             </div>
 
          </form>

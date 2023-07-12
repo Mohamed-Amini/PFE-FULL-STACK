@@ -40,25 +40,22 @@ export default function Servicesdrop() {
   ]
   return (
     <Cadr>
-    <div className='w-full bg-[#FFFFFF] px-10 py-10 rounded-[20px]  h-auto flex justify-between'>
-            <h1 className='font-medium text-3xl'>SERVICES</h1>
-            <div className='w-[80%]'>
-              <p className='font-semibold text-3xl w-2/4 mb-24'>To helping you achieve your health goals from the comfort of your own home. Here are some of the services we offer:</p>
-              <button className=" w-[165px] h-[45px] bg-blue-600 rounded-[24.75px] text-white text-[18px] font-medium "> Spacially </button>
-              <button className=" w-[165px] h-[45px] bg-slate-200 rounded-[24.75px] text-blue-600 text-[18px] font-medium ml-10"> Generally </button>
-
-              <div className='w-full mb-3'>
+    <div className='w-full bg-[#FFFFFF] px-10 py-10 rounded-[20px]  h-auto min-[700px]:flex min-[700px]:justify-between'>
+            <h1 className='font-medium text-3xl max-[700px]:text-center max-[700px]:mb-4'>SERVICES</h1>
+            <div className='w-[80%] max-[700px]:w-full'>
+              <p className='font-semibold text-3xl  min-[700px]:w-[350px]  max-[700px]:text-center mb-24'>To helping you achieve your health goals from the comfort of your own home. Here are some of the services we offer:</p>
+              <div className='w-full my-3'>
                 {data.map((iteme,i) => (
               <div className='border-[#5D5F6C] border-b-[1px] py-7'>
-                <div className='flex justify-between mb-3'>
-                      <h2 className='font-semibold text-2xl uppercase '>{iteme.qestion}</h2>
-                    <div className={`w-10 h-10 flex justify-center items-center rounded-full text-xl cursor-pointer ${selected === i ?' bg-[#0046FF]':' border-[1px] border-[#5D5F6C]'}`} onClick={()=> toggle(i)}>
+                <div className='flex justify-between mb-3 max-[700px]:gap-4'>
+                      <h2 className='font-semibold text-2xl uppercase max-[700px]:text-lg max-[400px]:text-xs max-[700px]:w-3/4'>{iteme.qestion}</h2>
+                    <div className={`w-10 h-10 flex justify-center  items-center rounded-full text-xl cursor-pointer ${selected === i ?' bg-[#0046FF]':' border-[1px] border-[#5D5F6C]'}`} onClick={()=> toggle(i)}>
                      {selected !== i && <img src={plus} alt="" /> } 
                       {selected === i && <FaTimes className='text-white'></FaTimes> }
                     </div>
 
                 </div>
-                    <div className={`w-3/4 text-[#5D5F6C] font-normal text-lg mt-3 ${selected === i ?'shwo':' content'} `}>
+                    <div className={`w-3/4 text-[#5D5F6C]  font-normal text-lg mt-3 ${selected === i ?'shwo':' content'} `}>
                       {iteme.answer}
                     </div>
                   </div>
@@ -67,5 +64,33 @@ export default function Servicesdrop() {
             </div> 
             </div>
     </Cadr>
+    // <Cadr>
+    // <div className='w-full bg-[#FFFFFF] px-10 py-10 rounded-[20px]  h-auto flex justify-between'>
+    //         <h1 className='font-medium text-3xl'>SERVICES</h1>
+    //         <div className='w-[80%]'>
+    //           <p className='font-semibold text-3xl w-2/4 mb-24'>To helping you achieve your health goals from the comfort of your own home. Here are some of the services we offer:</p>
+    //           <button className=" w-[165px] h-[45px] bg-blue-600 rounded-[24.75px] text-white text-[18px] font-medium "> Spacially </button>
+    //           <button className=" w-[165px] h-[45px] bg-slate-200 rounded-[24.75px] text-blue-600 text-[18px] font-medium ml-10"> Generally </button>
+
+    //           <div className='w-full mb-3'>
+    //             {data.map((iteme,i) => (
+    //           <div className='border-[#5D5F6C] border-b-[1px] py-7'>
+    //             <div className='flex justify-between mb-3'>
+    //                   <h2 className='font-semibold text-2xl uppercase '>{iteme.qestion}</h2>
+    //                 <div className={`w-10 h-10 flex justify-center items-center rounded-full text-xl cursor-pointer ${selected === i ?' bg-[#0046FF]':' border-[1px] border-[#5D5F6C]'}`} onClick={()=> toggle(i)}>
+    //                  {selected !== i && <img src={plus} alt="" /> } 
+    //                   {selected === i && <FaTimes className='text-white'></FaTimes> }
+    //                 </div>
+
+    //             </div>
+    //                 <div className={`w-3/4 text-[#5D5F6C] font-normal text-lg mt-3 ${selected === i ?'shwo':' content'} `}>
+    //                   {iteme.answer}
+    //                 </div>
+    //               </div>
+    //             ))}
+    //         </div> 
+    //         </div> 
+    //         </div>
+    // </Cadr>
   )
 }

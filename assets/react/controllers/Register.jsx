@@ -14,7 +14,6 @@ export default function Register(props) {
       <div className='mx-auto w-3/4 flex flex-col items-center gap-3'>
             <img className='h-16 w-16 rounded-full mb-8' src={LOGO} alt="" />
             <h1 className='font-semibold text-4xl leading-[20px]'>Create an account</h1>
-            <p className='font-medium text-[14px] text-[#5D5F6C]'>Lorem ipsum dolor sit amet consectetur.</p>
             </div>
         <form action={props.action} className='text-center' method="post">
         <Inputwraper>
@@ -38,10 +37,10 @@ export default function Register(props) {
                         <Input placeholder='Enter your password' type='password' id="password" name="registration_form[plainPassword]" required></Input>
                       </Inputwraper>
                       <div>
-                      <div className="form-floating mb-4">
-<input type="date" className="form-control" id="DateofBirth" name="registration_form[DateofBirth]" placeholder="Enter your date of birth" required />
-<label htmlFor="DateofBirth">Date of Birth</label>
-</div></div>
+                      <Inputwraper>
+                        <label htmlFor="Date of Birth" className='text-[#484951] font-medium text-lg'>Password</label>
+                        <Input  type='date' id="DateOfBirth" name="registration_form[DateofBirth]" required></Input>
+                      </Inputwraper></div>
                       <div>
                         <div className='flex gap-10 my-2'>
                           <input type="checkbox" id="agreeTerms" name="registration_form[agreeTerms]" value="1" required />

@@ -27,11 +27,11 @@ export default function Section3() {
   return (
     <Cadr className='h-[1000px]'>
       <div className='h-full Section3 relative rounded-[20px]'>
-        <div className='absolute w-full h-1/2 bottom-0 Section3dev  rounded-b-[20px] py-10 text-center'>
-          <h1 className='text-[#FFFFFF] font-medium text-xl w-2/4 text-center mx-auto mt-10'>
+        <div className='min-[700px]:absolute w-full min-[700px]:h-1/2 min-[700px]:bottom-0 Section3dev  rounded-b-[20px] py-10 text-center h-full'>
+          <h1 className='text-[#FFFFFF] font-medium text-xl w-2/4 text-center mx-auto mt-10 max-[700px]:w-full max-[700px]:text-3xl max-[700px]:px-3 '>
             The Ideal place for passionate physiotherapists whose main goal is to provide the patient with an empathic and holistic approach.
           </h1>
-          <div className='w-[85%] flex justify-between mx-auto py-10 my-10'>
+          <div className='w-[85%] flex justify-between mx-auto py-10 my-10 max-[700px]:flex-col max-[700px]:gap-9'>
             <div>
               <h1 className='font-semibold text-5xl text-[#FFFFFF] mb-2'>{expertDoctors}+</h1>
               <p className='font-light text-lg text-[#FFFFFF]'>Expert Doctors</p>
@@ -45,7 +45,7 @@ export default function Section3() {
               <p className='font-light text-lg text-[#FFFFFF]'>Website Visitors</p>
             </div>
           </div>
-          <button className='bg-[#FFFFFF] px-14 py-2 rounded-2xl'>More</button>
+          {/* <button className='bg-[#FFFFFF] px-14 py-2 rounded-2xl'>More</button> */}
         </div>
       </div>
     </Cadr>

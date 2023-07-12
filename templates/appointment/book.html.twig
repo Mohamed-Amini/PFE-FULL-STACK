@@ -22,5 +22,5 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div {{ react_component('Booking') }}></div>
+    <div {{ react_component('Booking' , { doctorsData : doctors}) }}></div>
 {% endblock %}

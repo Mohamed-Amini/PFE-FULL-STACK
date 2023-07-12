@@ -3,6 +3,7 @@ import Input from "./compenent/Ui/Input";
 import Submit from "./compenent/Ui/Submit";
 import Inputwraper from "./compenent/Ui/Inputwrapp";
 import Sliders from "./compenent/Login/Sliders"
+import LOGO from './images/blackIogo.svg'
 import { BrowserRouter as Router } from "react-router-dom";
 
 export default function LoginUser(props) {
@@ -13,12 +14,12 @@ export default function LoginUser(props) {
       <div className="w-1/2 px-24 flex flex-col justify-center ">
         <div>
           <div className="mx-auto w-3/4 flex flex-col items-center gap-3 mb-10">
-            <div className="h-16 w-16 bg-[#DFE3EE] rounded-full mb-8"></div>
+          <img  className='h-16 w-16 rounded-full mb-8' src={LOGO} alt="" />
             <h1 className="font-semibold text-4xl leading-[20px]">
               This is Doctors Login Page !
             </h1>
             <p className="font-medium text-[14px] text-[#5D5F6C]">
-              Lorem ipsum dolor sit amet consectetur.
+              unique login only for the doctors
             </p>
           </div>
           <form method="post">

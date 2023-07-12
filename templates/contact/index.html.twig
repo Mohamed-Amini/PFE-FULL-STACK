@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %}
 
 {% block title %}Contact{% endblock %}
 
@@ -13,4 +13,11 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     {{ form_end(form) }}
+{% endblock %} #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div {{ react_component('Contact')}} </div>
+
 {% endblock %}

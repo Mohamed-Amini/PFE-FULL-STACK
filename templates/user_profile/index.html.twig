@@ -9,7 +9,7 @@ PRofile Of the user
 
 
 {{ form_widget(form.firstName) }}
-<br>
+<br>  
 <br>
 {{ form_widget(form.lastName) }}
 <br>  
@@ -36,11 +36,12 @@ PRofile Of the user
    Verified    
 {% else %}
    Not verified  
-{% endif %} 
- #}
+{% endif %}  #}
+
 
  {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div {{ react_component('UserProfile') }}></div>
-{% endblock %}
+    <div {{ react_component('UserProfile' , { firstname : firstname , lastname : lastname , email : email , phone : phone , birthdate : birthdate 
+     }) }}></div>
+{% endblock %} 

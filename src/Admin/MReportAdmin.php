@@ -7,6 +7,7 @@ namespace App\Admin;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
@@ -18,7 +19,7 @@ final class MReportAdmin extends AbstractAdmin
         $filter
             ->add('id')
             ->add('Report')
-            ->add('createdAt')
+            
             ;
     }
 
@@ -28,6 +29,7 @@ final class MReportAdmin extends AbstractAdmin
             ->add('id')
             ->add('Report')
             ->add('createdAt')
+            ->add('Appointment')
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
                     'show' => [],
@@ -42,7 +44,10 @@ final class MReportAdmin extends AbstractAdmin
         $form
             ->add('id')
             ->add('Report')
-            ->add('createdAt')
+            ->add('createdAt', FieldDescriptionInterface::TYPE_DATETIME, [
+                'label' => 'Time of Creation',
+                'format' => 'Y-m-d H:i',
+            ])
             ;
     }
 
@@ -51,7 +56,10 @@ final class MReportAdmin extends AbstractAdmin
         $show
             ->add('id')
             ->add('Report')
-            ->add('createdAt')
+            ->add('createdAt', FieldDescriptionInterface::TYPE_DATETIME, [
+                'label' => 'Time of Creation',
+                'format' => 'Y-m-d H:i',
+            ])
             ;
     }
 }

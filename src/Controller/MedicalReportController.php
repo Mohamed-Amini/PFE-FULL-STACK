@@ -23,13 +23,23 @@ class MedicalReportController extends AbstractController
     #[Route('doctor/medical/reports', name: 'medical_report')]
     public function index(): Response
     {
-        // Get all appointments for the logged in doctor
+        
         $doctor = $this->getUser(); // Get the logged in user (doctor)
         $appointments = $this->em->getRepository(Appointment::class)->findBy(['doctor' => $doctor]);
-
+        dump($appointments);
+        $appointmentData = array_map(function (Appointment $appointment) {
+            return [
+                'id' => $appointment->getId(),
+                'patientName' => $appointment->getUser()->getFullName(),
+                'doctorName' => $appointment->getDoctor()->getFullName(),
+                'appointmentDate' => $appointment->getAppointmentDate()->format('Y-m-d'),
+            ];
+        }, $appointments);
+    
         return $this->render('medical_report/index.html.twig', [
-            'appointments' => $appointments
+            'appointments' => $appointmentData,
         ]);
+    
     }
 
     #[Route('doctor/medical/report/{id}', name: 'medical_report_show')]
@@ -51,9 +61,11 @@ class MedicalReportController extends AbstractController
         }
         
         return $this->render('medical_report/show.html.twig', [
-            'appointment' => $appointment,
+            'Appointmentid' => $appointment->getId(),
+            'date' => $appointment->getAppointmentDate(),
+            'birth' => $patient->getDateofBirth(),             
             'age' => $age,
-            'patient' => $patient,
+            'name' => $patient->getFullName(),
             'form' => $form->createView()
         ]);
     }
