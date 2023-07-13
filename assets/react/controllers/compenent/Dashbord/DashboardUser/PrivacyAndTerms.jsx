@@ -3,7 +3,7 @@ import React from 'react';
 export default function PrivacyAndTerms() {
 
   return (
-    <div className='w-[79%] fixed right-0 h-[815px] rounded-xl py-4 mt-3 bg-white px-6'>
+    <div className='w-[79%] fixed right-0 h-screen rounded-xl py-4 mt-3 bg-white px-6'>
         <div className='text-2xl font-semibold text-[#1B53F5] mb-8'>Privacy Policy</div>
       <div className='mb-8'>
         <p className='text-lg leading-relaxed mb-4'>

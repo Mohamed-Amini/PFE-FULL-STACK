@@ -38,7 +38,7 @@ export default function Register(props) {
                       </Inputwraper>
                       <div>
                       <Inputwraper>
-                        <label htmlFor="Date of Birth" className='text-[#484951] font-medium text-lg'>Password</label>
+                        <label htmlFor="Date of Birth" className='text-[#484951] font-medium text-lg'>Date of Birth</label>
                         <Input  type='date' id="DateOfBirth" name="registration_form[DateofBirth]" required></Input>
                       </Inputwraper></div>
                       <div>

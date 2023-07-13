@@ -7,7 +7,15 @@ import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom'
 import { useState } from 'react';
 import Home1 from './Home1';
-export default function DashbordUi({doctor}) {
+export default function DashbordUi({data}) {
+
+    
+
+    console.log(data)
+
+    const doctor = data.username
+    const date = data.appointments.date
+    console.log(date)
     
     const path = useLocation()
     const [width,setwidth] = useState(false)
@@ -21,6 +29,7 @@ export default function DashbordUi({doctor}) {
             console.log(width)
         }
     }
+    
     useEffect(() => {
        if(path.pathname === '/Dashbord'){
         setname('Dashboard')
@@ -53,7 +62,7 @@ export default function DashbordUi({doctor}) {
                     <div className='h-10 w-10 rounded-full bg-[#D9D9D9]'></div>
                 </div>
     </div>
-    <Home1 doctor={doctor}></Home1>
+    <Home1 doctor={doctor} date={date}></Home1>
         </div>
       
     </div>

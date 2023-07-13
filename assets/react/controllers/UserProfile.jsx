@@ -20,7 +20,7 @@ export default function SettingsEdit({ firstname , lastname , email  , phone }) 
     <form className='w-[79%] fixed right-0 h-full  rounded-xl py-4 mt-3  bg-white px-6 flex justify-between gap-6' method='post'>
       <div className="flex flex-col gap-4">
         <div className="w-52 h-52 bg-[#F9F9F9] flex justify-center items-center rounded-full object-cover">            
-            <img  alt="Preview" style={{ maxWidth: '200px' }} className="w-full h-full rounded-full object-cover" />
+            <img   style={{ maxWidth: '200px' }} className="w-full h-full rounded-full object-cover" />
         </div>
         <label htmlFor='inputTag' className='cursor-pointer bg-[#252838] text-white w-36 text-center py-4 px-2 rounded-xl mx-auto'>
           + Add picture

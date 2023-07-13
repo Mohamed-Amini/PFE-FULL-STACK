@@ -90,10 +90,9 @@ class AppointmentController extends AbstractController
     {
             
         // Get the current user
-        $user = $this->getUser();
-        
-        // If the user is a doctor, get all appointments for that doctor
-        if ($user instanceof Doctors) {
+            $user = $this->getUser();
+            
+            if ($user instanceof Doctors) {
             $appointments = $entityManager->getRepository(Appointment::class)->findBy([
                 'doctor' => $user,
             ]);
@@ -165,15 +164,5 @@ class AppointmentController extends AbstractController
     public function paymentCancel() 
     {
         return $this->redirectToRoute('book_appointment');
-    }
-
-    #[Route('/user/Terms' , name: 'app_user_terms')]
-    public function terms(){
-        return $this->render('appointment/Terms.html.twig', []);
-    }
-    
-    #[Route('/doctor/Terms' , name: 'app_doctor_terms')]
-    public function DoctorTerms(){
-        return $this->render('appointment/DocTerms.html.twig', []);
     }
 }

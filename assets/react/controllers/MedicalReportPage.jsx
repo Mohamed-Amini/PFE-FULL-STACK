@@ -22,23 +22,23 @@ export default function AppointmentReport({ name, age, Appointmentid, birth, dat
           <div className="flex flex-col md:w-1/2 space-y-6">
             <div className="flex items-center space-x-4">
               <label className="text-gray-700 font-medium w-40">Appointment:</label>
-              <span className="text-gray-400">{Appointmentid}</span>
+              <span className="text-blue-600 ">{Appointmentid}</span>
             </div>
             <div className="flex items-center space-x-4">
               <label className="text-gray-700 font-medium w-40">Appointment Date:</label>
-              <span className="text-gray-400">{date.date}</span>
+              <span className="text-blue-600">{date.date}</span>
             </div>
             <div className="flex items-center space-x-4">
               <label className="text-gray-700 font-medium w-40">Patient Name:</label>
-              <span className="text-gray-400">{name}</span>
+              <span className="text-blue-600">{name}</span>
             </div>
             <div className="flex items-center space-x-4">
               <label className="text-gray-700 font-medium w-40">Patient Birthday:</label>
-              <span className="text-gray-400">{birth.date}</span>
+              <span className="text-blue-600">{birth.date}</span>
             </div>
             <div className="flex items-center space-x-4">
               <label className="text-gray-700 font-medium w-40">Patient Age:</label>
-              <span className="text-gray-400">{age}</span>
+              <span className="text-blue-600">{age}</span>
             </div>
           </div>
           <div className="flex flex-col md:w-1/2 space-y-6">

@@ -12,22 +12,18 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mercure\HubInterface;
 use Symfony\Component\Mercure\Update;
 
-class IndexController extends AbstractController
+class TermsController extends AbstractController
 {
 
-    #[Route('/publish', name: 'publish')]
-    public function publish(HubInterface $hub): Response
-    {
-        $update = new Update(
-            'https://example.com/books/1',
-            json_encode(['status' => 'Message has been successfully published'])
-        );
-
-        $hub->publish($update);
-
-        return new Response('published!');
+    #[Route('/user/Terms' , name: 'app_user_terms')]
+    public function terms(){
+        return $this->render('appointment/Terms.html.twig', []);
     }
-
+    
+    #[Route('/doctor/Terms' , name: 'app_doctor_terms')]
+    public function DoctorTerms(){
+        return $this->render('appointment/DocTerms.html.twig', []);
+    }
 
 
 }

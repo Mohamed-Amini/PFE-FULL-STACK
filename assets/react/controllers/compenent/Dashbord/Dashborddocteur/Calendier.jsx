@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import React from 'react';
 
-function Calendar() {
+function Calendar({appointmentDate}) {
+
+  console.log(appointmentDate)
+  
+  const dateappointment = new Date(appointmentDate)
+  console.log(dateappointment);
   const [selectedMonth, setSelectedMonth] = useState(new Date());
-  const [appointments, setAppointments] = useState([{ date: new Date(2023, 5, 28), time: '12h-14h' }]);
+  const [appointments, setAppointments] = useState([{ date:dateappointment , time: '12h-14h' }]);
 
   // Function to handle month change
   function handleMonthChange(event) {

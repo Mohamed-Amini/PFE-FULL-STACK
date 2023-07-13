@@ -3,5 +3,5 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<div {{ react_component('LoginDoc')}} </div>
+<div {{ react_component('LoginDoc' , {last_username : last_username , error : error}) }} </div>
 {% endblock %}

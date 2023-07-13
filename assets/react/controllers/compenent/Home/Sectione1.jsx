@@ -17,7 +17,7 @@ export default function Sectione1() {
       <h1 className='text-[#FFFFFF] text-5xl font-semibold w-3/4 leading-[54px] max-[700px]:text-4xl'>Experience Online Physiotherapy Today!</h1>
     <div className='mt-9 flex gap-7 items-center'>
       <button className='text-xl font-medium bg-[#FFFFFF] w-[240px] py-2 rounded-[20px] text-[#2560FE] flex items-center justify-between pl-14 relative  max-[700px]:text-center'>
-        <a href='/services'> Get in touch </a>
+        <a href='/services' className='no-underline'> Get in touch </a>
         <div className='absolute right-2 bg-[#1B53F5] w-8 h-8 flex justify-center items-center rounded-[50%] text-white'>
       <FaChevronRight></FaChevronRight>
         </div>

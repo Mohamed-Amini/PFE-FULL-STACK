@@ -53,16 +53,17 @@ class DocterProfileController extends AbstractController
 
         $appointments = $this->entityManager->getRepository(Appointment::class)->findBy(['doctor' => $doctor]);
 
-        $dateString = $appointments[0]->getAppointmentDate()->format('Y-m-d H:i:s'); 
+        // $dateString = $appointments[0]->getAppointmentDate()->format('Y-m-d H:i:s'); 
+        $appointmentsDate = $appointments[0]->getAppointmentDate();
 
-        dump($dateString);
+        dump($appointmentsDate);
 
 
 
         $username = $doctor->getDocFirstName();
         return $this->render('docter_profile/dashboard.html.twig',[
             'username' => $username,
-            'appointments' => $dateString
+            'appointments' => $appointmentsDate
         ]);
     }
 }

@@ -1,11 +1,15 @@
 import React from 'react'
 import Calendar from './Calendier'
 
-export default function Home1({doctor} , appointments) {
+export default function Home1({doctor , date}) {
+  
+  console.log(doctor , date);
 
-  console.log(doctor);
+  const appointmentDate = date
+
+  console.log(appointmentDate)
   return (
-    <div className='w-full h-ful'>
+    <div className='w-full h-ful'>s
       <div className='flex w-full py-3 px-2 h-[400px] justify-between'>
       <div className='bg-[#1B53F5] h-full rounded-3xl py-3 px-3 w-[30%] backg'>
           <p className='font-medium text-3xl text-white font-sans w-[250px]'>Welcome back <span>Dr.{doctor}</span></p>
@@ -30,7 +34,7 @@ export default function Home1({doctor} , appointments) {
         </div>
       </div>
       </div>
-      <Calendar appointments={appointments}></Calendar>
+      <Calendar appointmentDate={appointmentDate} ></Calendar>
     </div>
   )
 }
